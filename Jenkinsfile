@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stage('Check Docker') {
+            steps {
+                bat 'where docker'
+                bat 'docker --version'
+                bat 'docker info'
+            }
+        }
         stage('1. Checkout Code') {
             steps {
                 checkout scm
