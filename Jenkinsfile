@@ -8,12 +8,14 @@ pipeline {
 
     stages {
         stage('Check Docker') {
-            steps {
-                bat 'where docker'
-                bat 'docker --version'
-                bat 'docker info'
-            }
-        }
+    steps {
+        bat '''
+            echo Checking Docker executable...
+
+            "C:\\Users\\STUDENT\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" --version
+        '''
+    }
+}
         stage('1. Checkout Code') {
             steps {
                 checkout scm
