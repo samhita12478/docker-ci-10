@@ -41,11 +41,16 @@ pipeline {
 }
 
         stage('4. Push Image to Registry') {
-            steps {
-                bat "docker push ${REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}"
-                bat "docker push ${REGISTRY}/${IMAGE_NAME}:latest"
-            }
-        }
+    steps {
+        bat '''
+            set "PATH=C:\\Users\\STUDENT\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;%PATH%"
+
+            docker --version
+
+            docker push localhost:5000/anil-demo-app:5
+        '''
+    }
+}
     }
 
     post {
