@@ -29,10 +29,16 @@ pipeline {
         }
 
         stage('3. Build & Tag Docker Image') {
-            steps {
-                bat "docker build -t ${REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER} -t ${REGISTRY}/${IMAGE_NAME}:latest ."
-            }
-        }
+    steps {
+        bat '''
+            set "PATH=C:\\Users\\STUDENT\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;%PATH%"
+
+            docker --version
+
+            docker build -t localhost:5000/anil-demo-app:4 -t localhost:5000/anil-demo-app:latest .
+        '''
+    }
+}
 
         stage('4. Push Image to Registry') {
             steps {
